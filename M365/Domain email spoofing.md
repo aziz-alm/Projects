@@ -24,9 +24,9 @@ Next, I checked the email authentication records on the legacy domain:
 The primary domain had full protection (DMARC `p=reject`, DKIM active, strict SPF). But the legacy domain had none of it. Because both sit in the same tenant, the legacy domain is a valid sender identity  and it's completely spoofable.
 
 I sent a test email impersonating `admin@[legacy domain]` using a web-based SMTP tool. It landed:
-![[Pasted image 20260623205013.png]]
-![[Pasted image 20260623205044.png]]
+![PoC — spoofed email in inbox](../Imgs/Pasted%20image%2020260623205013.png)
 
+![PoC — sender address detail](../Imgs/Pasted%20image%2020260623205044.png)
 The email hit spam rather than inbox, which means the receiving server's spam filters are doing their job but the email was still **accepted and delivered**, not rejected. With a clean sending IP (not a known open mailer), delivery to inbox is realistic.
 
 ## What Did I Learn?
